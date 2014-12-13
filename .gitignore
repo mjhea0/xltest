@@ -2,7 +2,7 @@
 .DS_Store
 node_modules
 *.sock
-*env*
+*.env
 *xlsx
 newrelic_agent.log
 bower_components/

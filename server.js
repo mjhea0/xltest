@@ -1,4 +1,4 @@
-var 
+var
   http            = require('http')
   , flash           = require('connect-flash')
   , express         = require('express')
@@ -31,20 +31,20 @@ var forceSSL = function (req, res, next) {
   }
   return next();
 };
-if (env != 'development') { app.use(forceSSL); }
+// if (env != 'development') { app.use(forceSSL); }
 
   // local SSL
-if (env == 'development') {
-  var 
-    https   = require('https')
-  , fs      = require('fs')
-  , options = { 
-      key:  fs.readFileSync('./lib/SSL/dev/server.key')
-    , cert: fs.readFileSync('./lib/SSL/dev/server.crt')
-    , requestCert: false
-    , rejectUnauthorized: false
-    };
-}
+// if (env == 'development') {
+//   var
+//     https   = require('https')
+//   , fs      = require('fs')
+//   , options = {
+//       key:  fs.readFileSync('./lib/SSL/dev/server.key')
+//     , cert: fs.readFileSync('./lib/SSL/dev/server.crt')
+//     , requestCert: false
+//     , rejectUnauthorized: false
+//     };
+// }
 
 // view template engine
 app.set('view engine', 'jade');
@@ -55,13 +55,13 @@ app.set('models', require('./app/model'));
 
 // MVC Definitions =============
 // models =============
-var model = { 
+var model = {
   purchase        : app.get('models').Purchase
 };
 
 // controllers ========
 var controller = {
-  static_pages    : require('./app/controller/static_pages.js') 
+  static_pages    : require('./app/controller/static_pages.js')
   , purchase      : require('./app/controller/purchase.js')
 };
 
@@ -74,15 +74,15 @@ require('./app/routes.js')(app
 // launch ===================
 db.sequelize.sync({ force: false }).complete(function(err) {
   if (err) { throw err[0] ; } else {
-    if (env == 'production') {
-      http.createServer(app).listen(app.get('port'), function(){ 
+    // if (env == 'production') {
+      http.createServer(app).listen(app.get('port'), function(){
         console.log('The magic happens on port ' + app.get('port'));
       });
-    } else if (env == 'development') {
-      https.createServer(options, app).listen(app.get('port'), function(){ 
-        console.log('The magic happens on port ' + app.get('port'));
-      });
-    }
+    // } else if (env == 'development') {
+    //   https.createServer(options, app).listen(app.get('port'), function(){
+    //     console.log('The magic happens on port ' + app.get('port'));
+    //   });
+    // }
   }
 });
 

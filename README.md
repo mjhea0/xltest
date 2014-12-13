@@ -32,7 +32,7 @@ The stack:
 
 	$ vim .env
 
-Add in super secret configuration variables (API keys, database URL)
+Add in super secret configuration variables (API keys, database URL). See the example file (`.env_sample`) for details.
 
 Add the Excel test in `/public/assets/xltest.xlsx`
 

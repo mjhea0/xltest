@@ -34,6 +34,21 @@ The stack:
 
 Add in super secret configuration variables (API keys, database URL). See the example file (`.env_sample`) for details.
 
+Here are the config vars you'll need...
+````
+DATABASE_URL= [[ path to HTTP endpoint where heroku PSQL database lives ]]
+FILE_PATH= [[ path to HTTP endpoint where file lives ]]
+GMAIL_PASS=
+GMAIL_USER=
+HEROKU_POSTGRESQL_ORANGE_URL=
+STRIPE_LIVE_PUBLIC=
+STRIPE_LIVE_SECRET=
+STRIPE_TEST_PUBLIC=
+STRIPE_TEST_SECRET=
+NODE_ENV=production
+
+````
+
 Add the Excel test in `/public/assets/xltest.xlsx`
 
 
@@ -41,7 +56,7 @@ Add the Excel test in `/public/assets/xltest.xlsx`
 
 Run the server locally with `node-foreman` (loads config vars from `.env`)
 
-	nf start -x 8080 -e env/dev.env
+	nf start -x 8080 -e lib/env/dev.env
 
 Or, deploy
 
